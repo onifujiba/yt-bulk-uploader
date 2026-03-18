@@ -465,8 +465,8 @@
       <h3 data-fr="Nous contacter" data-en="Get in Touch">Get in Touch</h3>
       <p data-fr="Auteur de l'extension YT Bulk Uploader" data-en="Author of the YT Bulk Uploader extension">Author of the YT Bulk Uploader extension</p>
     </div>
-    <a href="mailto:onifujiba@proton.me" class="contact-btn">
-      <span data-fr="✉ Envoyer un message" data-en="✉ Send a message">✉ Send a message</span>
+    <a href="https://github.com/onifujiba/yt-bulk-uploader/issues" class="contact-btn" target="_blank">
+      <span data-fr="🐙 Ouvrir une issue GitHub" data-en="🐙 Open a GitHub Issue">🐙 Open a GitHub Issue</span>
     </a>
   </div>
 
@@ -477,13 +477,10 @@
     © 2026 YT Bulk Uploader —
     <span data-fr="Règles de confidentialité" data-en="Privacy Policy">Privacy Policy</span>
   </p>
-  <p style="margin-top:8px;opacity:.6;">
-    <span data-fr="Hébergé sur" data-en="Hosted on">Hosted on</span>
-    <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
-  </p>
+
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   let currentLang = 'en';
 
   function setLang(lang) {
@@ -505,12 +502,4 @@
 
       document.getElementById('lang-label').textContent = lang === 'fr' ? 'Langue :' : 'Language:';
       document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-
-      document.querySelectorAll('.lang-fade').forEach(el => el.classList.remove('switching'));
-    }, 250);
-  }
-</script>
-
-</body>
-</html>
+      document.getElementById('btn-en').classList.toggle('active', lang =
