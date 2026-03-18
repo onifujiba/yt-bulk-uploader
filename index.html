@@ -211,7 +211,8 @@
       font-family: 'Playfair Display', serif;
       font-size: 0.7rem;
       color: var(--muted);
-      min-width: 28px;
+      min-width: 52px;
+      flex-shrink: 0;
     }
 
     .toc a {
@@ -543,7 +544,7 @@
       <h3 data-fr="Nous contacter" data-en="Get in Touch">Nous contacter</h3>
       <p data-fr="Délégué à la Protection des Données (DPO)&lt;br&gt;Réponse sous 72 heures ouvrées" data-en="Data Protection Officer (DPO)&lt;br&gt;Response within 72 business hours">Délégué à la Protection des Données (DPO)<br>Réponse sous 72 heures ouvrées</p>
     </div>
-    <a href="mailto:privacy@votre-extension.com" class="contact-btn">
+    <a href="mailto:onifujiba@proton.me" class="contact-btn">
       <span data-fr="✉ Envoyer un message" data-en="✉ Send a message">✉ Envoyer un message</span>
     </a>
   </div>
@@ -563,7 +564,7 @@
   </p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   let currentLang = 'en';
 
   // Apply English on page load
@@ -604,13 +605,4 @@
       if (e.isIntersecting) {
         e.target.style.animationDelay = '0s';
         e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('section').forEach(s => observer.observe(s));
-</script>
-
-</body>
-</html>
+        observer.unobser
