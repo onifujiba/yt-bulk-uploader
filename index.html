@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy / Règles de confidentialité</title>
+  <title>Privacy Policy — YT Bulk Uploader</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,6 +16,9 @@
       --gold: #c9963a;
       --muted: #7a7267;
       --rule: #d4cfc6;
+      --green: #2d7a4f;
+      --green-bg: #f0faf4;
+      --green-border: #b8deca;
     }
 
     html { scroll-behavior: smooth; }
@@ -103,6 +106,32 @@
       padding: 64px 40px 100px; position: relative; z-index: 1;
     }
 
+    /* ── zero-data hero banner ── */
+    .zero-banner {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-left: 4px solid var(--green);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .zero-icon {
+      font-size: 2.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .zero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .zero-body { font-size: 0.92rem; color: #2a5a3f; line-height: 1.65; }
+
     /* ── TOC ── */
     .toc {
       background: var(--cream); border: 1px solid var(--rule);
@@ -114,7 +143,6 @@
       font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 14px;
     }
-    /* TOC uses its own counter list — no bullet pseudo-element */
     .toc ol { list-style: none; counter-reset: toc; padding: 0; margin: 0; }
     .toc ol li {
       counter-increment: toc;
@@ -123,7 +151,6 @@
       align-items: baseline;
       padding: 5px 0;
       border-bottom: 1px dotted var(--rule);
-      /* reset the global li styles */
       position: static;
       padding-left: 0;
       margin-bottom: 0;
@@ -133,7 +160,6 @@
       content: counter(toc, upper-roman);
       font-family: 'Playfair Display', serif;
       font-size: 0.72rem; color: var(--muted);
-      /* override global li::before */
       position: static; left: auto; font-weight: 400;
     }
     .toc a {
@@ -162,7 +188,6 @@
 
     p { font-size: 0.95rem; color: #3a3630; margin-bottom: 14px; }
 
-    /* content lists (NOT toc) */
     .content-list { list-style: none; padding: 0; margin-bottom: 14px; }
     .content-list li {
       position: relative; padding-left: 20px;
@@ -181,6 +206,29 @@
       padding: 20px 24px; border-radius: 2px; margin: 20px 0; font-size: 0.9rem;
     }
 
+    /* ── permission table ── */
+    .perm-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.88rem; margin: 16px 0 20px;
+    }
+    .perm-table th {
+      text-align: left; padding: 8px 12px;
+      background: var(--cream); color: var(--muted);
+      font-weight: 500; letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--rule);
+    }
+    .perm-table td {
+      padding: 9px 12px; border-bottom: 1px dotted var(--rule);
+      vertical-align: top; color: #3a3630;
+    }
+    .perm-table tr:last-child td { border-bottom: none; }
+    .pill {
+      display: inline-block; font-size: 0.72rem; font-weight: 500;
+      padding: 2px 9px; border-radius: 20px; letter-spacing: 0.04em;
+    }
+    .pill-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+    .pill-gray  { background: var(--cream);    color: var(--muted); border: 1px solid var(--rule); }
+
     /* ── contact card ── */
     .contact-card {
       background: var(--ink); color: var(--paper);
@@ -198,7 +246,6 @@
     }
     .contact-btn:hover { background: #c9503a; transform: translateY(-1px); }
 
-    /* ── footer ── */
     footer {
       text-align: center; padding: 32px 40px;
       border-top: 1px solid var(--rule);
@@ -207,20 +254,8 @@
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── lang fade ── */
     .lang-fade { transition: opacity 0.25s ease; }
     .lang-fade.switching { opacity: 0; }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    header .badge, header h1, header .subtitle, header .meta {
-      animation: fadeDown 0.5s ease both;
-    }
-    header h1    { animation-delay: 0.1s; }
-    header .subtitle { animation-delay: 0.2s; }
-    header .meta { animation-delay: 0.3s; }
 
     @media (max-width: 600px) {
       .lang-bar { padding: 10px 20px; }
@@ -228,6 +263,8 @@
       .wrapper { padding: 40px 24px 72px; }
       .contact-card { padding: 28px 24px; }
       .meta { gap: 16px; }
+      .zero-banner { flex-direction: column; gap: 12px; }
+      .perm-table th, .perm-table td { padding: 7px 8px; }
     }
   </style>
 </head>
@@ -248,8 +285,8 @@
     <span data-fr="Règles de" data-en="Privacy">Privacy</span>
     <em><span data-fr="confidentialité" data-en="Policy">Policy</span></em>
   </h1>
-  <p class="subtitle" data-fr="Ce document décrit comment votre extension collecte, utilise et protège vos données personnelles." data-en="This document describes how your extension collects, uses, and protects your personal data.">
-    This document describes how your extension collects, uses, and protects your personal data.
+  <p class="subtitle" data-fr="YT Bulk Uploader — Une extension qui ne collecte, ne stocke et ne transmet aucune donnée." data-en="YT Bulk Uploader — An extension that collects, stores, and transmits no data whatsoever.">
+    YT Bulk Uploader — An extension that collects, stores, and transmits no data whatsoever.
   </p>
   <div class="meta">
     <span data-fr="📅 Mise à jour : Mars 2026" data-en="📅 Updated: March 2026">📅 Updated: March 2026</span>
@@ -260,145 +297,173 @@
 
 <main class="wrapper lang-fade">
 
+  <!-- Zero-data banner -->
+  <div class="zero-banner">
+    <div class="zero-icon">🛡️</div>
+    <div>
+      <div class="zero-title" data-fr="Aucune donnée collectée, point." data-en="Zero data collected. Period.">Zero data collected. Period.</div>
+      <p class="zero-body" data-fr="YT Bulk Uploader ne collecte, n'enregistre, ne stocke et ne transmet aucune donnée personnelle ou technique. L'extension fonctionne entièrement dans votre navigateur et interagit exclusivement avec YouTube Studio via votre propre session. Aucun serveur tiers n'est impliqué." data-en="YT Bulk Uploader does not collect, record, store, or transmit any personal or technical data. The extension runs entirely inside your browser and interacts exclusively with YouTube Studio through your own session. No third-party server is ever involved.">YT Bulk Uploader does not collect, record, store, or transmit any personal or technical data. The extension runs entirely inside your browser and interacts exclusively with YouTube Studio through your own session. No third-party server is ever involved.</p>
+    </div>
+  </div>
+
+  <!-- TOC -->
   <nav class="toc">
     <div class="toc-title" data-fr="Table des matières" data-en="Table of Contents">Table of Contents</div>
     <ol>
-      <li><a href="#collecte"      data-fr="Données collectées"        data-en="Data Collected">Data Collected</a></li>
-      <li><a href="#utilisation"   data-fr="Utilisation des données"   data-en="Use of Data">Use of Data</a></li>
-      <li><a href="#partage"       data-fr="Partage des données"       data-en="Data Sharing">Data Sharing</a></li>
-      <li><a href="#stockage"      data-fr="Stockage et sécurité"      data-en="Storage &amp; Security">Storage &amp; Security</a></li>
-      <li><a href="#droits"        data-fr="Vos droits"                data-en="Your Rights">Your Rights</a></li>
-      <li><a href="#cookies"       data-fr="Cookies et traceurs"       data-en="Cookies &amp; Trackers">Cookies &amp; Trackers</a></li>
-      <li><a href="#mineurs"       data-fr="Protection des mineurs"    data-en="Children's Privacy">Children's Privacy</a></li>
-      <li><a href="#modifications" data-fr="Modifications"             data-en="Policy Changes">Policy Changes</a></li>
-      <li><a href="#contact"       data-fr="Contact"                   data-en="Contact">Contact</a></li>
+      <li><a href="#what"        data-fr="Ce que fait l'extension"      data-en="What the Extension Does">What the Extension Does</a></li>
+      <li><a href="#nodata"      data-fr="Aucune donnée collectée"      data-en="No Data Collected">No Data Collected</a></li>
+      <li><a href="#perms"       data-fr="Permissions requises"         data-en="Required Permissions">Required Permissions</a></li>
+      <li><a href="#local"       data-fr="Traitement local uniquement"  data-en="Local Processing Only">Local Processing Only</a></li>
+      <li><a href="#third"       data-fr="Services tiers"               data-en="Third-Party Services">Third-Party Services</a></li>
+      <li><a href="#mineurs"     data-fr="Protection des mineurs"       data-en="Children's Privacy">Children's Privacy</a></li>
+      <li><a href="#changes"     data-fr="Modifications"                data-en="Policy Changes">Policy Changes</a></li>
+      <li><a href="#contact"     data-fr="Contact"                      data-en="Contact">Contact</a></li>
     </ol>
   </nav>
 
   <!-- I -->
-  <section id="collecte">
+  <section id="what">
     <div class="section-header">
       <span class="section-num">I.</span>
-      <h2 data-fr="Données collectées" data-en="Data Collected">Data Collected</h2>
+      <h2 data-fr="Ce que fait l'extension" data-en="What the Extension Does">What the Extension Does</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Dans le cadre du fonctionnement de cette extension, nous pouvons collecter les catégories de données suivantes :" data-en="In the course of operating this extension, we may collect the following categories of data:">In the course of operating this extension, we may collect the following categories of data:</p>
+    <p data-fr="YT Bulk Uploader est une extension de navigateur qui vous permet de téléverser plusieurs vidéos en lot vers YouTube Studio depuis un dossier local. Voici exactement ce qu'elle fait :" data-en="YT Bulk Uploader is a browser extension that lets you upload multiple videos in bulk to YouTube Studio from a local folder. Here is exactly what it does:">YT Bulk Uploader is a browser extension that lets you upload multiple videos in bulk to YouTube Studio from a local folder. Here is exactly what it does:</p>
     <ul class="content-list">
-      <li data-fr="&lt;strong&gt;Données d'utilisation :&lt;/strong&gt; pages visitées, clics, durée de session — uniquement pour améliorer l'expérience." data-en="&lt;strong&gt;Usage data:&lt;/strong&gt; pages visited, clicks, session duration — solely to improve the experience."><strong>Usage data:</strong> pages visited, clicks, session duration — solely to improve the experience.</li>
-      <li data-fr="&lt;strong&gt;Préférences utilisateur :&lt;/strong&gt; paramètres et configurations que vous sauvegardez dans l'extension." data-en="&lt;strong&gt;User preferences:&lt;/strong&gt; settings and configurations you save within the extension."><strong>User preferences:</strong> settings and configurations you save within the extension.</li>
-      <li data-fr="&lt;strong&gt;Données techniques :&lt;/strong&gt; type de navigateur, version de l'extension, langue du système." data-en="&lt;strong&gt;Technical data:&lt;/strong&gt; browser type, extension version, system language."><strong>Technical data:</strong> browser type, extension version, system language.</li>
+      <li data-fr="Ouvre YouTube Studio dans un onglet de votre navigateur." data-en="Opens YouTube Studio in a browser tab.">Opens YouTube Studio in a browser tab.</li>
+      <li data-fr="Lit les fichiers vidéo sélectionnés depuis votre appareil via l'API File System Access du navigateur." data-en="Reads video files you select from your device using the browser's File System Access API.">Reads video files you select from your device using the browser's File System Access API.</li>
+      <li data-fr="Injecte ces fichiers directement dans la boîte de dialogue de téléversement native de YouTube Studio — exactement comme si vous les aviez glissés-déposés manuellement." data-en="Injects those files directly into YouTube Studio's native upload dialog — exactly as if you had dragged and dropped them manually.">Injects those files directly into YouTube Studio's native upload dialog — exactly as if you had dragged and dropped them manually.</li>
+      <li data-fr="Surveille la progression de l'upload dans l'interface de YouTube Studio pour gérer les lots successifs." data-en="Monitors upload progress inside YouTube Studio's interface to manage successive batches.">Monitors upload progress inside YouTube Studio's interface to manage successive batches.</li>
     </ul>
-    <div class="callout">
-      🔒 <span data-fr="&lt;strong&gt;Nous ne collectons jamais&lt;/strong&gt; vos mots de passe, informations bancaires, ni aucun contenu de vos messages privés." data-en="&lt;strong&gt;We never collect&lt;/strong&gt; your passwords, banking information, or any content from your private messages."><strong>We never collect</strong> your passwords, banking information, or any content from your private messages.</span>
-    </div>
+    <p data-fr="L'extension n'effectue aucune autre opération. Elle n'a pas de compte utilisateur, pas de tableau de bord, pas de backend." data-en="The extension performs no other operations. It has no user accounts, no dashboard, no backend.">The extension performs no other operations. It has no user accounts, no dashboard, no backend.</p>
   </section>
 
   <!-- II -->
-  <section id="utilisation">
+  <section id="nodata">
     <div class="section-header">
       <span class="section-num">II.</span>
-      <h2 data-fr="Utilisation des données" data-en="Use of Data">Use of Data</h2>
+      <h2 data-fr="Aucune donnée collectée" data-en="No Data Collected">No Data Collected</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Les données collectées sont utilisées exclusivement pour les finalités suivantes :" data-en="Collected data is used exclusively for the following purposes:">Collected data is used exclusively for the following purposes:</p>
+    <p data-fr="L'extension ne collecte, n'enregistre ni ne transmet aucune des données suivantes :" data-en="The extension does not collect, log, or transmit any of the following:">The extension does not collect, log, or transmit any of the following:</p>
     <ul class="content-list">
-      <li data-fr="Assurer le bon fonctionnement et la performance de l'extension." data-en="Ensuring the proper functioning and performance of the extension.">Ensuring the proper functioning and performance of the extension.</li>
-      <li data-fr="Mémoriser vos préférences entre les sessions." data-en="Remembering your preferences between sessions.">Remembering your preferences between sessions.</li>
-      <li data-fr="Diagnostiquer les erreurs et améliorer la stabilité." data-en="Diagnosing errors and improving stability.">Diagnosing errors and improving stability.</li>
-      <li data-fr="Proposer des mises à jour et nouvelles fonctionnalités adaptées à vos usages." data-en="Suggesting updates and new features suited to your usage.">Suggesting updates and new features suited to your usage.</li>
+      <li data-fr="Identifiants personnels (nom, e-mail, compte Google, etc.)" data-en="Personal identifiers (name, email, Google account, etc.)">Personal identifiers (name, email, Google account, etc.)</li>
+      <li data-fr="Noms, métadonnées ou contenu des fichiers vidéo sélectionnés" data-en="Names, metadata, or content of the video files you select">Names, metadata, or content of the video files you select</li>
+      <li data-fr="URLs ou historique de navigation" data-en="URLs or browsing history">URLs or browsing history</li>
+      <li data-fr="Données de performance ou de télémétrie" data-en="Performance or telemetry data">Performance or telemetry data</li>
+      <li data-fr="Données de localisation ou d'appareil" data-en="Location or device data">Location or device data</li>
+      <li data-fr="Journaux d'erreurs envoyés à un serveur" data-en="Error logs sent to any server">Error logs sent to any server</li>
+      <li data-fr="Cookies ou traceurs publicitaires" data-en="Cookies or advertising trackers">Cookies or advertising trackers</li>
     </ul>
-    <p data-fr="Nous n'utilisons vos données à aucune fin publicitaire ou commerciale." data-en="We do not use your data for any advertising or commercial purpose.">We do not use your data for any advertising or commercial purpose.</p>
+    <div class="callout">
+      🔒 <span data-fr="Aucune information ne quitte jamais votre navigateur via cette extension. Elle ne fait que piloter YouTube Studio à votre place." data-en="No information ever leaves your browser through this extension. It simply drives YouTube Studio on your behalf.">No information ever leaves your browser through this extension. It simply drives YouTube Studio on your behalf.</span>
+    </div>
   </section>
 
   <!-- III -->
-  <section id="partage">
+  <section id="perms">
     <div class="section-header">
       <span class="section-num">III.</span>
-      <h2 data-fr="Partage des données" data-en="Data Sharing">Data Sharing</h2>
+      <h2 data-fr="Permissions requises" data-en="Required Permissions">Required Permissions</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Vos données ne sont &lt;strong&gt;jamais vendues&lt;/strong&gt; à des tiers. Elles peuvent être partagées uniquement dans les cas suivants :" data-en="Your data is &lt;strong&gt;never sold&lt;/strong&gt; to third parties. It may be shared only in the following cases:">Your data is <strong>never sold</strong> to third parties. It may be shared only in the following cases:</p>
-    <ul class="content-list">
-      <li data-fr="&lt;strong&gt;Prestataires techniques :&lt;/strong&gt; hébergement, analyse d'erreurs — soumis à des accords de confidentialité stricts." data-en="&lt;strong&gt;Technical providers:&lt;/strong&gt; hosting, error analysis — subject to strict confidentiality agreements."><strong>Technical providers:</strong> hosting, error analysis — subject to strict confidentiality agreements.</li>
-      <li data-fr="&lt;strong&gt;Obligations légales :&lt;/strong&gt; si la loi nous y oblige (décision de justice, autorité compétente)." data-en="&lt;strong&gt;Legal obligations:&lt;/strong&gt; when required by law (court order, competent authority)."><strong>Legal obligations:</strong> when required by law (court order, competent authority).</li>
-      <li data-fr="&lt;strong&gt;Sécurité :&lt;/strong&gt; pour protéger nos utilisateurs en cas de menace identifiée." data-en="&lt;strong&gt;Security:&lt;/strong&gt; to protect our users in the event of an identified threat."><strong>Security:</strong> to protect our users in the event of an identified threat.</li>
-    </ul>
+    <p data-fr="L'extension demande les permissions suivantes, strictement nécessaires à son fonctionnement :" data-en="The extension requests the following permissions, each strictly necessary for it to function:">The extension requests the following permissions, each strictly necessary for it to function:</p>
+
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th data-fr="Permission" data-en="Permission">Permission</th>
+          <th data-fr="Raison" data-en="Reason">Reason</th>
+          <th data-fr="Données collectées" data-en="Data Collected">Data Collected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>activeTab</code></td>
+          <td data-fr="Détecter si l'onglet actif est YouTube Studio avant d'agir" data-en="Detect whether the active tab is YouTube Studio before acting">Detect whether the active tab is YouTube Studio before acting</td>
+          <td><span class="pill pill-green" data-fr="Aucune" data-en="None">None</span></td>
+        </tr>
+        <tr>
+          <td><code>scripting</code></td>
+          <td data-fr="Injecter les fichiers dans la boîte de dialogue d'upload de YouTube Studio" data-en="Inject files into YouTube Studio's upload dialog">Inject files into YouTube Studio's upload dialog</td>
+          <td><span class="pill pill-green" data-fr="Aucune" data-en="None">None</span></td>
+        </tr>
+        <tr>
+          <td><code>tabs</code></td>
+          <td data-fr="Ouvrir YouTube Studio et détecter quand la page est prête" data-en="Open YouTube Studio and detect when the page is ready">Open YouTube Studio and detect when the page is ready</td>
+          <td><span class="pill pill-green" data-fr="Aucune" data-en="None">None</span></td>
+        </tr>
+        <tr>
+          <td><code>host: studio.youtube.com</code></td>
+          <td data-fr="Restreindre l'accès aux scripts uniquement à YouTube Studio" data-en="Restrict script access to YouTube Studio only">Restrict script access to YouTube Studio only</td>
+          <td><span class="pill pill-green" data-fr="Aucune" data-en="None">None</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p data-fr="Ces permissions ne permettent pas à l'extension de lire vos e-mails, d'accéder à d'autres sites web, ni de surveiller votre navigation." data-en="These permissions do not allow the extension to read your emails, access other websites, or monitor your browsing.">These permissions do not allow the extension to read your emails, access other websites, or monitor your browsing.</p>
   </section>
 
   <!-- IV -->
-  <section id="stockage">
+  <section id="local">
     <div class="section-header">
       <span class="section-num">IV.</span>
-      <h2 data-fr="Stockage et sécurité" data-en="Storage &amp; Security">Storage &amp; Security</h2>
+      <h2 data-fr="Traitement local uniquement" data-en="Local Processing Only">Local Processing Only</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="La majorité de vos données est stockée &lt;strong&gt;localement sur votre appareil&lt;/strong&gt;, via les API de stockage sécurisé du navigateur. En cas de synchronisation, les données transitent via des connexions chiffrées (TLS 1.3)." data-en="Most of your data is stored &lt;strong&gt;locally on your device&lt;/strong&gt; via the browser's secure storage APIs. When synchronisation occurs, data is transmitted through encrypted connections (TLS 1.3).">Most of your data is stored <strong>locally on your device</strong> via the browser's secure storage APIs. When synchronisation occurs, data is transmitted through encrypted connections (TLS 1.3).</p>
-    <p data-fr="Les données sont conservées pour la durée nécessaire à leur finalité, et supprimées automatiquement à la désinstallation de l'extension." data-en="Data is retained for as long as necessary for its purpose and automatically deleted upon uninstallation of the extension.">Data is retained for as long as necessary for its purpose and automatically deleted upon uninstallation of the extension.</p>
+    <p data-fr="L'intégralité du traitement se déroule dans votre navigateur :" data-en="All processing happens inside your browser:">All processing happens inside your browser:</p>
+    <ul class="content-list">
+      <li data-fr="Les fichiers vidéo sont lus depuis votre disque via l'API File System Access — ils ne transitent par aucun serveur intermédiaire." data-en="Video files are read from your disk via the browser's File System Access API — they pass through no intermediary server.">Video files are read from your disk via the browser's File System Access API — they pass through no intermediary server.</li>
+      <li data-fr="Les fichiers sont passés directement à l'interface de téléversement de YouTube Studio, qui les envoie à YouTube via votre propre compte et connexion." data-en="Files are passed directly to YouTube Studio's upload interface, which sends them to YouTube via your own account and connection.">Files are passed directly to YouTube Studio's upload interface, which sends them to YouTube via your own account and connection.</li>
+      <li data-fr="L'extension ne stocke aucune donnée entre les sessions. Aucune base de données, aucun localStorage persistant, aucun cookie n'est utilisé." data-en="The extension stores no data between sessions. No database, no persistent localStorage, no cookies are used.">The extension stores no data between sessions. No database, no persistent localStorage, no cookies are used.</li>
+    </ul>
   </section>
 
   <!-- V -->
-  <section id="droits">
+  <section id="third">
     <div class="section-header">
       <span class="section-num">V.</span>
-      <h2 data-fr="Vos droits" data-en="Your Rights">Your Rights</h2>
+      <h2 data-fr="Services tiers" data-en="Third-Party Services">Third-Party Services</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :" data-en="In accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws, you have the following rights:">In accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws, you have the following rights:</p>
-    <ul class="content-list">
-      <li data-fr="&lt;strong&gt;Droit d'accès :&lt;/strong&gt; savoir quelles données nous détenons sur vous." data-en="&lt;strong&gt;Right of access:&lt;/strong&gt; know what data we hold about you."><strong>Right of access:</strong> know what data we hold about you.</li>
-      <li data-fr="&lt;strong&gt;Droit de rectification :&lt;/strong&gt; corriger des données inexactes." data-en="&lt;strong&gt;Right to rectification:&lt;/strong&gt; correct inaccurate data."><strong>Right to rectification:</strong> correct inaccurate data.</li>
-      <li data-fr="&lt;strong&gt;Droit à l'effacement :&lt;/strong&gt; demander la suppression de vos données." data-en="&lt;strong&gt;Right to erasure:&lt;/strong&gt; request deletion of your data."><strong>Right to erasure:</strong> request deletion of your data.</li>
-      <li data-fr="&lt;strong&gt;Droit à la portabilité :&lt;/strong&gt; recevoir vos données dans un format structuré." data-en="&lt;strong&gt;Right to portability:&lt;/strong&gt; receive your data in a structured format."><strong>Right to portability:</strong> receive your data in a structured format.</li>
-      <li data-fr="&lt;strong&gt;Droit d'opposition :&lt;/strong&gt; vous opposer à certains traitements." data-en="&lt;strong&gt;Right to object:&lt;/strong&gt; object to certain processing activities."><strong>Right to object:</strong> object to certain processing activities.</li>
-    </ul>
-    <p data-fr="Pour exercer ces droits, contactez-nous à l'adresse indiquée dans la section Contact." data-en="To exercise these rights, contact us at the address listed in the &lt;a href='#contact' style='color:var(--accent)'&gt;Contact&lt;/a&gt; section.">To exercise these rights, contact us at the address listed in the <a href="#contact" style="color:var(--accent)">Contact</a> section.</p>
+    <p data-fr="YT Bulk Uploader n'intègre aucun service tiers — pas d'analytics, pas de SDK de suivi, pas de CDN externe, pas de publicité." data-en="YT Bulk Uploader integrates no third-party services — no analytics, no tracking SDK, no external CDN, no advertising.">YT Bulk Uploader integrates no third-party services — no analytics, no tracking SDK, no external CDN, no advertising.</p>
+    <p data-fr="Le seul service externe avec lequel l'extension interagit est &lt;strong&gt;YouTube Studio&lt;/strong&gt; (studio.youtube.com), et uniquement dans le cadre de l'action que vous déclenchez vous-même. L'utilisation que vous faites de YouTube Studio est régie par les &lt;a href='https://www.youtube.com/t/terms' style='color:var(--accent)' target='_blank'&gt;Conditions d'utilisation de YouTube&lt;/a&gt; et la &lt;a href='https://policies.google.com/privacy' style='color:var(--accent)' target='_blank'&gt;Politique de confidentialité de Google&lt;/a&gt;." data-en="The only external service the extension interacts with is &lt;strong&gt;YouTube Studio&lt;/strong&gt; (studio.youtube.com), and only as part of the action you trigger yourself. Your use of YouTube Studio is governed by &lt;a href='https://www.youtube.com/t/terms' style='color:var(--accent)' target='_blank'&gt;YouTube's Terms of Service&lt;/a&gt; and &lt;a href='https://policies.google.com/privacy' style='color:var(--accent)' target='_blank'&gt;Google's Privacy Policy&lt;/a&gt;.">The only external service the extension interacts with is <strong>YouTube Studio</strong> (studio.youtube.com), and only as part of the action you trigger yourself. Your use of YouTube Studio is governed by <a href="https://www.youtube.com/t/terms" style="color:var(--accent)" target="_blank">YouTube's Terms of Service</a> and <a href="https://policies.google.com/privacy" style="color:var(--accent)" target="_blank">Google's Privacy Policy</a>.</p>
   </section>
 
   <!-- VI -->
-  <section id="cookies">
-    <div class="section-header">
-      <span class="section-num">VI.</span>
-      <h2 data-fr="Cookies et traceurs" data-en="Cookies &amp; Trackers">Cookies &amp; Trackers</h2>
-    </div>
-    <div class="rule-line"></div>
-    <p data-fr="Cette extension n'installe &lt;strong&gt;aucun cookie&lt;/strong&gt; de traçage publicitaire. Des mécanismes de stockage local (localStorage, IndexedDB) peuvent être utilisés pour vos préférences, sans collecte externe." data-en="This extension installs &lt;strong&gt;no advertising tracking cookies&lt;/strong&gt;. Local storage mechanisms (localStorage, IndexedDB) may be used for your preferences, with no external data collection.">This extension installs <strong>no advertising tracking cookies</strong>. Local storage mechanisms (localStorage, IndexedDB) may be used for your preferences, with no external data collection.</p>
-  </section>
-
-  <!-- VII -->
   <section id="mineurs">
     <div class="section-header">
-      <span class="section-num">VII.</span>
+      <span class="section-num">VI.</span>
       <h2 data-fr="Protection des mineurs" data-en="Children's Privacy">Children's Privacy</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Cette extension n'est pas destinée aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles concernant des mineurs. Si vous êtes un parent ou tuteur légal et que vous pensez que votre enfant nous a fourni des données, veuillez nous contacter immédiatement." data-en="This extension is not intended for children under the age of 13. We do not knowingly collect personal data from minors. If you are a parent or legal guardian and believe your child has provided us with data, please contact us immediately.">This extension is not intended for children under the age of 13. We do not knowingly collect personal data from minors. If you are a parent or legal guardian and believe your child has provided us with data, please contact us immediately.</p>
+    <p data-fr="Cette extension ne collecte aucune donnée — pour personne, quelle que soit son âge. Elle n'est pas spécifiquement conçue pour les enfants, mais ne présente aucun risque lié à la collecte de données pour les utilisateurs mineurs." data-en="This extension collects no data from anyone, regardless of age. It is not specifically designed for children, but poses no data-collection risk to minor users.">This extension collects no data from anyone, regardless of age. It is not specifically designed for children, but poses no data-collection risk to minor users.</p>
   </section>
 
-  <!-- VIII -->
-  <section id="modifications">
+  <!-- VII -->
+  <section id="changes">
     <div class="section-header">
-      <span class="section-num">VIII.</span>
+      <span class="section-num">VII.</span>
       <h2 data-fr="Modifications de la politique" data-en="Policy Changes">Policy Changes</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Nous nous réservons le droit de mettre à jour cette politique à tout moment. En cas de changement significatif, vous en serez informé via une notification dans l'extension. La date de dernière mise à jour est indiquée en en-tête de ce document." data-en="We reserve the right to update this policy at any time. In the event of a significant change, you will be notified via an in-extension notification. The date of the last update is shown at the top of this document.">We reserve the right to update this policy at any time. In the event of a significant change, you will be notified via an in-extension notification. The date of the last update is shown at the top of this document.</p>
-    <p data-fr="L'utilisation continue de l'extension après notification vaut acceptation des nouvelles conditions." data-en="Continued use of the extension after notification constitutes acceptance of the updated terms.">Continued use of the extension after notification constitutes acceptance of the updated terms.</p>
+    <p data-fr="Si le comportement de l'extension venait à changer de manière significative — par exemple si une future version introduisait une quelconque forme de collecte de données — cette politique serait mise à jour en conséquence et la date de révision serait modifiée." data-en="If the extension's behaviour were to change significantly — for example if a future version introduced any form of data collection — this policy would be updated accordingly and the revision date changed.">If the extension's behaviour were to change significantly — for example if a future version introduced any form of data collection — this policy would be updated accordingly and the revision date changed.</p>
+    <p data-fr="L'engagement fondamental reste le suivant : aucune donnée utilisateur ne sera jamais collectée sans consentement explicite et sans mise à jour préalable de cette politique." data-en="The fundamental commitment remains: no user data will ever be collected without explicit consent and prior update of this policy.">The fundamental commitment remains: no user data will ever be collected without explicit consent and prior update of this policy.</p>
   </section>
 
-  <!-- IX -->
+  <!-- VIII -->
   <section id="contact">
     <div class="section-header">
-      <span class="section-num">IX.</span>
+      <span class="section-num">VIII.</span>
       <h2 data-fr="Contact" data-en="Contact">Contact</h2>
     </div>
     <div class="rule-line"></div>
-    <p data-fr="Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :" data-en="For any questions regarding this privacy policy or to exercise your rights, you may contact us:">For any questions regarding this privacy policy or to exercise your rights, you may contact us:</p>
+    <p data-fr="Pour toute question relative à cette politique, vous pouvez nous contacter :" data-en="For any questions regarding this policy, you may contact us:">For any questions regarding this policy, you may contact us:</p>
   </section>
 
   <div class="contact-card">
     <div>
       <h3 data-fr="Nous contacter" data-en="Get in Touch">Get in Touch</h3>
-      <p data-fr="Délégué à la Protection des Données (DPO)&lt;br&gt;Réponse sous 72 heures ouvrées" data-en="Data Protection Officer (DPO)&lt;br&gt;Response within 72 business hours">Data Protection Officer (DPO)<br>Response within 72 business hours</p>
+      <p data-fr="Auteur de l'extension YT Bulk Uploader" data-en="Author of the YT Bulk Uploader extension">Author of the YT Bulk Uploader extension</p>
     </div>
     <a href="mailto:onifujiba@proton.me" class="contact-btn">
       <span data-fr="✉ Envoyer un message" data-en="✉ Send a message">✉ Send a message</span>
@@ -409,9 +474,7 @@
 
 <footer class="lang-fade">
   <p>
-    © 2026 —
-    <a href="#" data-fr="Accueil" data-en="Home">Home</a> ·
-    <a href="#" data-fr="Conditions d'utilisation" data-en="Terms of Use">Terms of Use</a> ·
+    © 2026 YT Bulk Uploader —
     <span data-fr="Règles de confidentialité" data-en="Privacy Policy">Privacy Policy</span>
   </p>
   <p style="margin-top:8px;opacity:.6;">
@@ -437,8 +500,8 @@
       });
 
       document.title = lang === 'fr'
-        ? 'Règles de confidentialité / Privacy Policy'
-        : 'Privacy Policy / Règles de confidentialité';
+        ? 'Politique de confidentialité — YT Bulk Uploader'
+        : 'Privacy Policy — YT Bulk Uploader';
 
       document.getElementById('lang-label').textContent = lang === 'fr' ? 'Langue :' : 'Language:';
       document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
