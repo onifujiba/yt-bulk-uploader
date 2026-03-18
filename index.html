@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy / Règles de confidentialité</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a2e;
+      --paper: #f7f4ef;
+      --cream: #ede9e0;
+      --accent: #b5451b;
+      --gold: #c9963a;
+      --muted: #7a7267;
+      --rule: #d4cfc6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── language switcher ── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 40px;
+      gap: 8px;
+    }
+
+    .lang-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 4px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid #3a3a50;
+      color: #a09a90;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .lang-btn:hover:not(.active) {
+      border-color: var(--muted);
+      color: var(--paper);
+    }
+
+    /* ── header ── */
+    header {
+      position: relative;
+      padding: 80px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '§';
+      position: absolute;
+      top: -30px; right: -20px;
+      font-size: 280px;
+      color: var(--rule);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .badge svg { width: 12px; height: 12px; fill: currentColor; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      animation: fadeDown 0.6s 0.1s ease both;
+    }
+
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .subtitle {
+      margin-top: 16px;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-inline: auto;
+      animation: fadeDown 0.6s 0.2s ease both;
+    }
+
+    .meta {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      animation: fadeDown 0.6s 0.3s ease both;
+      flex-wrap: wrap;
+    }
+
+    .meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ── layout ── */
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 40px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--gold);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      border-radius: 2px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .toc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .toc ol { list-style: none; counter-reset: toc; }
+
+    .toc li {
+      counter-increment: toc;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 4px 0;
+      border-bottom: 1px dotted var(--rule);
+    }
+
+    .toc li:last-child { border-bottom: none; }
+
+    .toc li::before {
+      content: counter(toc, upper-roman);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.7rem;
+      color: var(--muted);
+      min-width: 28px;
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .toc a:hover { color: var(--accent); }
+
+    /* ── sections ── */
+    section {
+      margin-bottom: 52px;
+      animation: fadeUp 0.6s ease both;
+      animation-play-state: paused;
+    }
+
+    section.visible { animation-play-state: running; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--rule);
+      line-height: 1;
+      min-width: 40px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .rule-line {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--rule) 60%, transparent 100%);
+      margin-bottom: 20px;
+    }
+
+    p { font-size: 0.95rem; color: #3a3630; margin-bottom: 14px; }
+
+    ul, ol { padding-left: 0; list-style: none; margin-bottom: 14px; }
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      color: #3a3630;
+      margin-bottom: 8px;
+    }
+
+    li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    strong { font-weight: 500; color: var(--ink); }
+
+    .callout {
+      background: linear-gradient(135deg, #fff8f5 0%, #fff4ee 100%);
+      border: 1px solid #f0d0c0;
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 2px;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .callout-icon { font-size: 1.1rem; margin-right: 6px; }
+
+    .contact-card {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 36px 40px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 52px;
+    }
+
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-card p { color: #a09a90; margin: 0; font-size: 0.88rem; }
+
+    .contact-btn {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .contact-btn:hover { background: #c9503a; transform: translateY(-1px); }
+
+    footer {
+      text-align: center;
+      padding: 32px 40px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── lang transition ── */
+    .lang-fade { transition: opacity 0.25s ease; }
+    .lang-fade.switching { opacity: 0; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .lang-bar { padding: 10px 20px; }
+      header { padding: 56px 24px 44px; }
+      .wrapper { padding: 40px 24px 72px; }
+      .contact-card { padding: 28px 24px; }
+      .meta { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Language bar -->
+<div class="lang-bar">
+  <span class="lang-label" id="lang-label">Langue :</span>
+  <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">
+    <span>🇫🇷</span> Français
+  </button>
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">
+    <span>🇬🇧</span> English
+  </button>
+</div>
+
+<!-- Header -->
+<header class="lang-fade">
+  <div class="badge">
+    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    <span data-fr="Politique officielle" data-en="Official Policy">Politique officielle</span>
+  </div>
+  <h1>
+    <span data-fr="Règles de" data-en="Privacy">Règles de</span>
+    <em><span data-fr="confidentialité" data-en="Policy">confidentialité</span></em>
+  </h1>
+  <p class="subtitle" data-fr="Ce document décrit comment votre extension collecte, utilise et protège vos données personnelles." data-en="This document describes how your extension collects, uses, and protects your personal data.">
+    Ce document décrit comment votre extension collecte, utilise et protège vos données personnelles.
+  </p>
+  <div class="meta">
+    <span data-fr="📅 Mise à jour : Mars 2026" data-en="📅 Updated: March 2026">📅 Mise à jour : Mars 2026</span>
+    <span data-fr="🌐 Français" data-en="🌐 English">🌐 Français</span>
+    <span>📄 Version 1.0</span>
+  </div>
+</header>
+
+<main class="wrapper lang-fade">
+
+  <nav class="toc">
+    <div class="toc-title" data-fr="Table des matières" data-en="Table of Contents">Table des matières</div>
+    <ol>
+      <li><a href="#collecte"      data-fr="Données collectées"       data-en="Data Collected">Données collectées</a></li>
+      <li><a href="#utilisation"   data-fr="Utilisation des données"  data-en="Use of Data">Utilisation des données</a></li>
+      <li><a href="#partage"       data-fr="Partage des données"      data-en="Data Sharing">Partage des données</a></li>
+      <li><a href="#stockage"      data-fr="Stockage et sécurité"     data-en="Storage &amp; Security">Stockage et sécurité</a></li>
+      <li><a href="#droits"        data-fr="Vos droits"               data-en="Your Rights">Vos droits</a></li>
+      <li><a href="#cookies"       data-fr="Cookies et traceurs"      data-en="Cookies &amp; Trackers">Cookies et traceurs</a></li>
+      <li><a href="#mineurs"       data-fr="Protection des mineurs"   data-en="Children's Privacy">Protection des mineurs</a></li>
+      <li><a href="#modifications" data-fr="Modifications"            data-en="Policy Changes">Modifications</a></li>
+      <li><a href="#contact"       data-fr="Contact"                  data-en="Contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <!-- I -->
+  <section id="collecte">
+    <div class="section-header">
+      <span class="section-num">I.</span>
+      <h2 data-fr="Données collectées" data-en="Data Collected">Données collectées</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Dans le cadre du fonctionnement de cette extension, nous pouvons collecter les catégories de données suivantes :" data-en="In the course of operating this extension, we may collect the following categories of data:">Dans le cadre du fonctionnement de cette extension, nous pouvons collecter les catégories de données suivantes :</p>
+    <ul>
+      <li data-fr="&lt;strong&gt;Données d'utilisation :&lt;/strong&gt; pages visitées, clics, durée de session — uniquement pour améliorer l'expérience." data-en="&lt;strong&gt;Usage data:&lt;/strong&gt; pages visited, clicks, session duration — solely to improve the experience."><strong>Données d'utilisation :</strong> pages visitées, clics, durée de session — uniquement pour améliorer l'expérience.</li>
+      <li data-fr="&lt;strong&gt;Préférences utilisateur :&lt;/strong&gt; paramètres et configurations que vous sauvegardez dans l'extension." data-en="&lt;strong&gt;User preferences:&lt;/strong&gt; settings and configurations you save within the extension."><strong>Préférences utilisateur :</strong> paramètres et configurations que vous sauvegardez dans l'extension.</li>
+      <li data-fr="&lt;strong&gt;Données techniques :&lt;/strong&gt; type de navigateur, version de l'extension, langue du système." data-en="&lt;strong&gt;Technical data:&lt;/strong&gt; browser type, extension version, system language."><strong>Données techniques :</strong> type de navigateur, version de l'extension, langue du système.</li>
+    </ul>
+    <div class="callout">
+      <span class="callout-icon">🔒</span>
+      <span data-fr="&lt;strong&gt;Nous ne collectons jamais&lt;/strong&gt; vos mots de passe, informations bancaires, ni aucun contenu de vos messages privés." data-en="&lt;strong&gt;We never collect&lt;/strong&gt; your passwords, banking information, or any content from your private messages."><strong>Nous ne collectons jamais</strong> vos mots de passe, informations bancaires, ni aucun contenu de vos messages privés.</span>
+    </div>
+  </section>
+
+  <!-- II -->
+  <section id="utilisation">
+    <div class="section-header">
+      <span class="section-num">II.</span>
+      <h2 data-fr="Utilisation des données" data-en="Use of Data">Utilisation des données</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Les données collectées sont utilisées exclusivement pour les finalités suivantes :" data-en="Collected data is used exclusively for the following purposes:">Les données collectées sont utilisées exclusivement pour les finalités suivantes :</p>
+    <ul>
+      <li data-fr="Assurer le bon fonctionnement et la performance de l'extension." data-en="Ensuring the proper functioning and performance of the extension.">Assurer le bon fonctionnement et la performance de l'extension.</li>
+      <li data-fr="Mémoriser vos préférences entre les sessions." data-en="Remembering your preferences between sessions.">Mémoriser vos préférences entre les sessions.</li>
+      <li data-fr="Diagnostiquer les erreurs et améliorer la stabilité." data-en="Diagnosing errors and improving stability.">Diagnostiquer les erreurs et améliorer la stabilité.</li>
+      <li data-fr="Proposer des mises à jour et nouvelles fonctionnalités adaptées à vos usages." data-en="Suggesting updates and new features suited to your usage.">Proposer des mises à jour et nouvelles fonctionnalités adaptées à vos usages.</li>
+    </ul>
+    <p data-fr="Nous n'utilisons vos données à aucune fin publicitaire ou commerciale." data-en="We do not use your data for any advertising or commercial purpose.">Nous n'utilisons vos données à aucune fin publicitaire ou commerciale.</p>
+  </section>
+
+  <!-- III -->
+  <section id="partage">
+    <div class="section-header">
+      <span class="section-num">III.</span>
+      <h2 data-fr="Partage des données" data-en="Data Sharing">Partage des données</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Vos données ne sont &lt;strong&gt;jamais vendues&lt;/strong&gt; à des tiers. Elles peuvent être partagées uniquement dans les cas suivants :" data-en="Your data is &lt;strong&gt;never sold&lt;/strong&gt; to third parties. It may be shared only in the following cases:">Vos données ne sont <strong>jamais vendues</strong> à des tiers. Elles peuvent être partagées uniquement dans les cas suivants :</p>
+    <ul>
+      <li data-fr="&lt;strong&gt;Prestataires techniques :&lt;/strong&gt; hébergement, analyse d'erreurs — soumis à des accords de confidentialité stricts." data-en="&lt;strong&gt;Technical providers:&lt;/strong&gt; hosting, error analysis — subject to strict confidentiality agreements."><strong>Prestataires techniques :</strong> hébergement, analyse d'erreurs — soumis à des accords de confidentialité stricts.</li>
+      <li data-fr="&lt;strong&gt;Obligations légales :&lt;/strong&gt; si la loi nous y oblige (décision de justice, autorité compétente)." data-en="&lt;strong&gt;Legal obligations:&lt;/strong&gt; when required by law (court order, competent authority)."><strong>Obligations légales :</strong> si la loi nous y oblige (décision de justice, autorité compétente).</li>
+      <li data-fr="&lt;strong&gt;Sécurité :&lt;/strong&gt; pour protéger nos utilisateurs en cas de menace identifiée." data-en="&lt;strong&gt;Security:&lt;/strong&gt; to protect our users in the event of an identified threat."><strong>Sécurité :</strong> pour protéger nos utilisateurs en cas de menace identifiée.</li>
+    </ul>
+  </section>
+
+  <!-- IV -->
+  <section id="stockage">
+    <div class="section-header">
+      <span class="section-num">IV.</span>
+      <h2 data-fr="Stockage et sécurité" data-en="Storage &amp; Security">Stockage et sécurité</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="La majorité de vos données est stockée &lt;strong&gt;localement sur votre appareil&lt;/strong&gt;, via les API de stockage sécurisé du navigateur. En cas de synchronisation, les données transitent via des connexions chiffrées (TLS 1.3)." data-en="Most of your data is stored &lt;strong&gt;locally on your device&lt;/strong&gt; via the browser's secure storage APIs. When synchronisation occurs, data is transmitted through encrypted connections (TLS 1.3).">La majorité de vos données est stockée <strong>localement sur votre appareil</strong>, via les API de stockage sécurisé du navigateur. En cas de synchronisation, les données transitent via des connexions chiffrées (TLS 1.3).</p>
+    <p data-fr="Les données sont conservées pour la durée nécessaire à leur finalité, et supprimées automatiquement à la désinstallation de l'extension." data-en="Data is retained for as long as necessary for its purpose and automatically deleted upon uninstallation of the extension.">Les données sont conservées pour la durée nécessaire à leur finalité, et supprimées automatiquement à la désinstallation de l'extension.</p>
+  </section>
+
+  <!-- V -->
+  <section id="droits">
+    <div class="section-header">
+      <span class="section-num">V.</span>
+      <h2 data-fr="Vos droits" data-en="Your Rights">Vos droits</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :" data-en="In accordance with the General Data Protection Regulation (GDPR) and applicable data protection laws, you have the following rights:">Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+    <ul>
+      <li data-fr="&lt;strong&gt;Droit d'accès :&lt;/strong&gt; savoir quelles données nous détenons sur vous." data-en="&lt;strong&gt;Right of access:&lt;/strong&gt; know what data we hold about you."><strong>Droit d'accès :</strong> savoir quelles données nous détenons sur vous.</li>
+      <li data-fr="&lt;strong&gt;Droit de rectification :&lt;/strong&gt; corriger des données inexactes." data-en="&lt;strong&gt;Right to rectification:&lt;/strong&gt; correct inaccurate data."><strong>Droit de rectification :</strong> corriger des données inexactes.</li>
+      <li data-fr="&lt;strong&gt;Droit à l'effacement :&lt;/strong&gt; demander la suppression de vos données." data-en="&lt;strong&gt;Right to erasure:&lt;/strong&gt; request deletion of your data."><strong>Droit à l'effacement :</strong> demander la suppression de vos données.</li>
+      <li data-fr="&lt;strong&gt;Droit à la portabilité :&lt;/strong&gt; recevoir vos données dans un format structuré." data-en="&lt;strong&gt;Right to portability:&lt;/strong&gt; receive your data in a structured format."><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré.</li>
+      <li data-fr="&lt;strong&gt;Droit d'opposition :&lt;/strong&gt; vous opposer à certains traitements." data-en="&lt;strong&gt;Right to object:&lt;/strong&gt; object to certain processing activities."><strong>Droit d'opposition :</strong> vous opposer à certains traitements.</li>
+    </ul>
+    <p data-fr="Pour exercer ces droits, contactez-nous à l'adresse indiquée dans la section Contact." data-en="To exercise these rights, contact us at the address listed in the Contact section.">Pour exercer ces droits, contactez-nous à l'adresse indiquée dans la section <a href="#contact" style="color:var(--accent)">Contact</a>.</p>
+  </section>
+
+  <!-- VI -->
+  <section id="cookies">
+    <div class="section-header">
+      <span class="section-num">VI.</span>
+      <h2 data-fr="Cookies et traceurs" data-en="Cookies &amp; Trackers">Cookies et traceurs</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Cette extension n'installe &lt;strong&gt;aucun cookie&lt;/strong&gt; de traçage publicitaire. Des mécanismes de stockage local (localStorage, IndexedDB) peuvent être utilisés pour vos préférences, sans collecte externe." data-en="This extension installs &lt;strong&gt;no advertising tracking cookies&lt;/strong&gt;. Local storage mechanisms (localStorage, IndexedDB) may be used for your preferences, with no external data collection.">Cette extension n'installe <strong>aucun cookie</strong> de traçage publicitaire. Des mécanismes de stockage local (localStorage, IndexedDB) peuvent être utilisés pour vos préférences, sans collecte externe.</p>
+  </section>
+
+  <!-- VII -->
+  <section id="mineurs">
+    <div class="section-header">
+      <span class="section-num">VII.</span>
+      <h2 data-fr="Protection des mineurs" data-en="Children's Privacy">Protection des mineurs</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Cette extension n'est pas destinée aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles concernant des mineurs. Si vous êtes un parent ou tuteur légal et que vous pensez que votre enfant nous a fourni des données, veuillez nous contacter immédiatement." data-en="This extension is not intended for children under the age of 13. We do not knowingly collect personal data from minors. If you are a parent or legal guardian and believe your child has provided us with data, please contact us immediately.">Cette extension n'est pas destinée aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles concernant des mineurs. Si vous êtes un parent ou tuteur légal et que vous pensez que votre enfant nous a fourni des données, veuillez nous contacter immédiatement.</p>
+  </section>
+
+  <!-- VIII -->
+  <section id="modifications">
+    <div class="section-header">
+      <span class="section-num">VIII.</span>
+      <h2 data-fr="Modifications de la politique" data-en="Policy Changes">Modifications de la politique</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Nous nous réservons le droit de mettre à jour cette politique à tout moment. En cas de changement significatif, vous en serez informé via une notification dans l'extension. La date de dernière mise à jour est indiquée en en-tête de ce document." data-en="We reserve the right to update this policy at any time. In the event of a significant change, you will be notified via an in-extension notification. The date of the last update is shown at the top of this document.">Nous nous réservons le droit de mettre à jour cette politique à tout moment. En cas de changement significatif, vous en serez informé via une notification dans l'extension. La date de dernière mise à jour est indiquée en en-tête de ce document.</p>
+    <p data-fr="L'utilisation continue de l'extension après notification vaut acceptation des nouvelles conditions." data-en="Continued use of the extension after notification constitutes acceptance of the updated terms.">L'utilisation continue de l'extension après notification vaut acceptation des nouvelles conditions.</p>
+  </section>
+
+  <!-- IX -->
+  <section id="contact">
+    <div class="section-header">
+      <span class="section-num">IX.</span>
+      <h2 data-fr="Contact" data-en="Contact">Contact</h2>
+    </div>
+    <div class="rule-line"></div>
+    <p data-fr="Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :" data-en="For any questions regarding this privacy policy or to exercise your rights, you may contact us:">Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :</p>
+  </section>
+
+  <div class="contact-card">
+    <div>
+      <h3 data-fr="Nous contacter" data-en="Get in Touch">Nous contacter</h3>
+      <p data-fr="Délégué à la Protection des Données (DPO)&lt;br&gt;Réponse sous 72 heures ouvrées" data-en="Data Protection Officer (DPO)&lt;br&gt;Response within 72 business hours">Délégué à la Protection des Données (DPO)<br>Réponse sous 72 heures ouvrées</p>
+    </div>
+    <a href="mailto:privacy@votre-extension.com" class="contact-btn">
+      <span data-fr="✉ Envoyer un message" data-en="✉ Send a message">✉ Envoyer un message</span>
+    </a>
+  </div>
+
+</main>
+
+<footer class="lang-fade">
+  <p>
+    © 2026 Votre Extension —
+    <a href="#" data-fr="Accueil" data-en="Home">Accueil</a> ·
+    <a href="#" data-fr="Conditions d'utilisation" data-en="Terms of Use">Conditions d'utilisation</a> ·
+    <span data-fr="Règles de confidentialité" data-en="Privacy Policy">Règles de confidentialité</span>
+  </p>
+  <p style="margin-top:8px;opacity:.6;">
+    <span data-fr="Hébergé sur" data-en="Hosted on">Hébergé sur</span>
+    <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
+  </p>
+</footer>
+
+<script>
+  let currentLang = 'en';
+
+  // Apply English on page load
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-en');
+    if (val !== null) el.innerHTML = val;
+  });
+  document.getElementById('lang-label').textContent = 'Language:';
+
+  function setLang(lang) {
+    if (lang === currentLang) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('.lang-fade').forEach(el => el.classList.add('switching'));
+
+    setTimeout(() => {
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val !== null) el.innerHTML = val;
+      });
+
+      document.title = lang === 'fr'
+        ? 'Règles de confidentialité / Privacy Policy'
+        : 'Privacy Policy / Règles de confidentialité';
+
+      document.getElementById('lang-label').textContent = lang === 'fr' ? 'Langue :' : 'Language:';
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      document.querySelectorAll('.lang-fade').forEach(el => el.classList.remove('switching'));
+    }, 250);
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationDelay = '0s';
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
